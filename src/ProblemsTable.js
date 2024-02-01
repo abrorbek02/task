@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button, TablePagination, Box, useTheme, Typography } from '@mui/material';
 
 
@@ -76,10 +77,10 @@ return (
     <Typography variant="h5" sx={{ mb: 2, color: theme.palette.primary.main }}>Created by Boltayev Abrorbek</Typography>
     <Box sx={filterBoxStyle}>
       <TextField label="Title" variant="outlined" name="title" onChange={handleFilterChange} sx={filterInputStyle} />
-      <TextField label="Tags" variant="outlined" name="tags" onChange={handleFilterChange} sx={filterInputStyle} />
+      {/* <TextField label="Tags" variant="outlined" name="tags" onChange={handleFilterChange} sx={filterInputStyle} /> */}
       <TextField label="Difficulty" variant="outlined" name="difficulty" onChange={handleFilterChange} sx={filterInputStyle} />
-      <TextField label="Rating" variant="outlined" name="rating" onChange={handleFilterChange} sx={filterInputStyle} />
-      <TextField label="Solved" variant="outlined" name="solved" onChange={handleFilterChange} sx={filterInputStyle} />
+      {/* <TextField label="Rating" variant="outlined" name="rating" onChange={handleFilterChange} sx={filterInputStyle} /> */}
+      {/* <TextField label="Solved" variant="outlined" name="solved" onChange={handleFilterChange} sx={filterInputStyle} /> */}
       <Button variant="contained" color="secondary" onClick={() => fetchProblems()} sx={searchButtonStyle}>Search</Button>
     </Box>
     <TableContainer>
@@ -99,9 +100,19 @@ return (
             <TableRow hover role="checkbox" tabIndex={-1} key={problem.id}>
               <TableCell>{problem.id}</TableCell>
               <TableCell>{problem.title}</TableCell>
-              <TableCell>{problem.tags.join(', ')}</TableCell>
-              <TableCell>{problem.difficulty}</TableCell>
-              <TableCell>{problem.rating}</TableCell>
+              <TableCell>
+                {/* {problem.tags.join(', ')} */}
+                {problem.tags.map((item, i) => <span className='tags_span' key={i}>{item.name}</span>)}
+              </TableCell>
+              <TableCell>{problem.difficultyTitle}</TableCell>
+              <TableCell>
+                {
+                  <>
+                    <span className='rating like'>{problem.likesCount} <AiFillLike /></span>
+                    <span className='rating dislike'>{problem.dislikesCount} <AiFillDislike /></span>
+                  </>
+                }
+              </TableCell>
               <TableCell>{problem.solved}</TableCell>
             </TableRow>
           ))}
