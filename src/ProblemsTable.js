@@ -77,10 +77,7 @@ return (
     <Typography variant="h5" sx={{ mb: 2, color: theme.palette.primary.main }}>Created by Boltayev Abrorbek</Typography>
     <Box sx={filterBoxStyle}>
       <TextField label="Title" variant="outlined" name="title" onChange={handleFilterChange} sx={filterInputStyle} />
-      {/* <TextField label="Tags" variant="outlined" name="tags" onChange={handleFilterChange} sx={filterInputStyle} /> */}
       <TextField label="Difficulty" variant="outlined" name="difficulty" onChange={handleFilterChange} sx={filterInputStyle} />
-      {/* <TextField label="Rating" variant="outlined" name="rating" onChange={handleFilterChange} sx={filterInputStyle} /> */}
-      {/* <TextField label="Solved" variant="outlined" name="solved" onChange={handleFilterChange} sx={filterInputStyle} /> */}
       <Button variant="contained" color="secondary" onClick={() => fetchProblems()} sx={searchButtonStyle}>Search</Button>
     </Box>
     <TableContainer>
